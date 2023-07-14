@@ -8,7 +8,7 @@ chmod 400 "$SSHPATH/key"
 SERVER_DEPLOY_STRING="$REMOTE_USER@$REMOTE_HOST:$TARGET_DIRECTORY"
 
 
-file_path"$SSHPATH/known_hosts"
+file_path="$SSHPATH/known_hosts"
 
 if test -f "$file_path"; then
     rm "$SSHPATH/known_hosts"
