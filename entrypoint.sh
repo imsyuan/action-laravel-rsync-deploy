@@ -6,6 +6,7 @@ mkdir "$SSHPATH"
 echo "$SSH_PRIVATE_KEY" > "$SSHPATH/key"
 echo "Host *
               PubkeyAcceptedKeyTypes +ssh-rsa
+              KexAlgorithms +diffie-hellman-group1-sha1
               HostKeyAlgorithms +ssh-rsa" > "$SSHPATH/config"
 chmod 400 "$SSHPATH/key"
 chmod 400 "$SSHPATH/config"
