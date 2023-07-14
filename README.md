@@ -24,7 +24,7 @@ Example usage to `/.github/workflows/*.yml` file
 
 ```
 - name: Laravel Rsync Deploy
-  uses: imsyuan/Laravel-Rsync-Deploy@master
+  uses: imsyuan/action-laravel-rsync-deploy@master
   env:
     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
     ARGS: "--ignore-times --compress --verbose --exclude=.git --exclude=.github --exclude=node_modules --no-perms --no-owner --no-group --recursive"
@@ -61,7 +61,7 @@ jobs:
           npm install && npm run production
 
       - name: Laravel Rsync Deploy
-        uses: SHSharkar/Laravel-Rsync-Deploy@master
+        uses: imsyuan/action-laravel-rsync-deploy@master
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "--ignore-times --compress --verbose --exclude=.git --exclude=.github --exclude=node_modules --no-perms --no-owner --no-group --recursive"
