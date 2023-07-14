@@ -9,6 +9,7 @@ echo "Host *
               KexAlgorithms=+diffie-hellman-group1-sha1
               HostKeyAlgorithms=+ssh-rsa" > "$SSHPATH/config"
 chmod 400 "$SSHPATH/key"
+chmod 400 "$SSHPATH/config"
 SERVER_DEPLOY_STRING="$REMOTE_USER@$REMOTE_HOST:$TARGET_DIRECTORY"
 
 
