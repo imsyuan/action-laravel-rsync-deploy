@@ -1,4 +1,4 @@
-name: "Laravel Rsync Deploy"
+name: "Laravel Rsync Deploy RSA"
 author: "imsyuan"
 description: "Deploy Laravel developed project with Rsync"
 inputs:
