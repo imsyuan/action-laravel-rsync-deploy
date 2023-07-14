@@ -18,4 +18,4 @@ else
 fi
 
 # Run Rsync synchronization
-sh -c "rsync $ARGS -e 'ssh -i $SSHPATH/key -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa -p $REMOTE_HOST_PORT' . $SERVER_DEPLOY_STRING"
+sh -c "rsync $ARGS -e 'ssh -v -i $SSHPATH/key -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa -p $REMOTE_HOST_PORT' . $SERVER_DEPLOY_STRING"
