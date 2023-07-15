@@ -1,28 +1,51 @@
 name: "Laravel Rsync Deploy RSA"
 author: "imsyuan"
-description: "Deploy Laravel developed project with Rsync"
+description: 'Synchronize files to the remote server using the SSH private key'
 inputs:
-  SSH_PRIVATE_KEY:  # Server SSH Private Key
-    description: 'Server SSH Private Key'
+  ssh_login_username:
+    description: 'SSH login username'
     required: true
-  REMOTE_HOST:
-    description: 'Remote Host or IP'
+  remote_server_ip:
+    description: 'remote server ip'
     required: true
-  REMOTE_HOST_PORT:
-    description: 'Remote Host Port'
+  ssh_port:
+    description: 'remote server SSH port'
     required: true
-  REMOTE_USER:
-    description: 'Remote User'
+    default: "22"
+  ssh_private_key:
+    description: 'login user SSH private key'
     required: true
-  TARGET_DIRECTORY:
-    description: 'Target directory'
-    default: '~/httpdocs'
+  source_path:
+    description: 'The source storage path of the synchronous files'
+    required: true
+  destination_path:
+    description: 'The destination storage path of the synchronous files'
+    required: true
+  ssh_args:
+    description: 'SSH args'
+    required: false
+  rsync_args:
+    description: 'rsync args'
+    required: false
+
 outputs:
-  status:
-    description: 'Status'
+  start_time:
+    description: 'Start time of synchronization'
+  end_time: # id of output
+    description: 'End time of synchronization'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.ssh_login_username }}
+    - ${{ inputs.remote_server_ip }}
+    - ${{ inputs.ssh_port }}
+    - ${{ inputs.ssh_private_key }}
+    - ${{ inputs.source_path }}
+    - ${{ inputs.destination_path }}
+    - ${{ inputs.ssh_args }}
+    - ${{ inputs.rsync_args }}
+
 branding:
-  icon: 'upload'  
-  color: 'blue'
+  icon: 'file'
+  color: 'green'
