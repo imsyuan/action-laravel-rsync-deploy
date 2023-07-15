@@ -30,7 +30,7 @@ start_time=$(date)
 echo "{start_time}={start_time}" >> $GITHUB_OUTPUT
 echo "Start time of synchronization  ->  $start_time"
 
-sh -c "rsync -e '$SSH_COMMAND' $8 -av $5 $1@$2:$6"
+sh -c "rsync -e '$SSH_COMMAND' $8 $5 $1@$2:$6"
 
 end_time=$(date)
 
