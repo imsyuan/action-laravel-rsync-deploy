@@ -13,10 +13,6 @@ set -euo pipefail
 
 SSH_PRIVATE_KEY_FILE='./id_rsa'
 
-echo "serverip: $2"
-echo "serverip: " $2
-echo "source_path: " $5
-
 echo "Saving private key......"
 
 printf "%s" "$4" >$SSH_PRIVATE_KEY_FILE
@@ -34,7 +30,7 @@ start_time=$(date)
 echo "{start_time}={start_time}" >> $GITHUB_OUTPUT
 echo "Start time of synchronization  ->  $start_time"
 
-rsync -e "$SSH_COMMAND" $8 -av $5 $1@$2:$6
+sh -c "rsync -e '$SSH_COMMAND' $8 -av $5 $1@$2:$6"
 
 end_time=$(date)
 
