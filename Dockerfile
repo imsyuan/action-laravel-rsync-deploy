@@ -1,18 +1,17 @@
-FROM debian:stable-slim
+# Container image that runs your code
+FROM alpine:latest
 
-RUN apt update
-RUN apt -yq install rsync openssh-client
+RUN apk update \
+ && apk upgrade \
+ && apk add --no-cache \
+            rsync \
+            openssh-client
 
-# Labels
-LABEL "com.github.actions.name"="Laravel Rsync Deploy Rsa"
-LABEL "com.github.actions.description"="Deploy Laravel developed project with Rsync"
-LABEL "com.github.actions.color"="blue"
-LABEL "com.github.actions.icon"="upload"
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.sh /entrypoint.sh
 
-LABEL "repository"="https://github.com/imsyuan/action-laravel-rsync-deploy"
-LABEL "homepage"="https://github.com/imsyuan/action-laravel-rsync-deploy"
-LABEL "maintainer"="imsyuan"
-
-ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
 ENTRYPOINT ["/entrypoint.sh"]
