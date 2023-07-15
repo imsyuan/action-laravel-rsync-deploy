@@ -13,6 +13,8 @@ set -euo pipefail
 
 SSH_PRIVATE_KEY_FILE='./id_rsa'
 
+echo "serverip: $2"
+
 echo "Saving private key......"
 
 printf "%s" "$4" >$SSH_PRIVATE_KEY_FILE
