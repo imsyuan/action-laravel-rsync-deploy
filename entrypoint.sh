@@ -15,13 +15,12 @@ SSH_PRIVATE_KEY_FILE='./id_rsa'
 
 echo "Saving private key......"
 
-printf "%s" "$4" >$SSH_PRIVATE_KEY_FILE
+printf "%s" "$4" > $SSH_PRIVATE_KEY_FILE
 
 echo "Done"
 
 chmod 600 $SSH_PRIVATE_KEY_FILE
 
-SSH_COMMAND="ssh -p $3 -i $SSH_PRIVATE_KEY_FILE $7"
 
 echo =========================================================================
 
@@ -30,7 +29,7 @@ start_time=$(date)
 echo "{start_time}={start_time}" >> $GITHUB_OUTPUT
 echo "Start time of synchronization  ->  $start_time"
 
-sh -c "rsync -e '$SSH_COMMAND' $8 $5 $1@$2:$6"
+sh -c "rsync -e 'ssh -p $3 -i $SSH_PRIVATE_KEY_FILE $7 -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa' $8 $5 $1@$2:$6"
 
 end_time=$(date)
 
