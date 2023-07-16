@@ -21,7 +21,7 @@ echo "Done"
 
 chmod 600 $SSH_PRIVATE_KEY_FILE
 
-SSH_COMMAND="ssh -p $3 -i $SSH_PRIVATE_KEY_FILE $7 -o StrictHostKeyChecking=no"
+SSH_COMMAND="ssh -p $3 -i $SSH_PRIVATE_KEY_FILE $7"
 
 echo =========================================================================
 
